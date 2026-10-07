@@ -19,7 +19,9 @@ Tune the thresholds in `SITE.callouts`. Add words or mint addresses to `blockWor
 Each visitor's browser does the scan. Two visitors in the same hour may see slightly different picks if the market moved between their visits. A single shared set of callouts plus a history page needs a small scheduled job, such as a GitHub Action, to write them to the repo.
 
 ## Replies
-Paste links to FOMY's best reply posts into `posts: [...]`. If the list is empty, the section shows the @FomyBot timeline instead (X sometimes only shows that to logged-in visitors).
+Paste links to FOMY's best X reply posts into `posts: [...]`, newest first. Each one shows the person's post above FOMY's reply. If the list is empty, the section shows the @FomyBot X timeline instead (X sometimes only shows that to logged-in visitors).
+
+The site tells visitors they can tag FOMY on X or Fomo and he'll respond. Replies on Fomo stay on Fomo; only X posts are shown on the site.
 
 ## Wallet judge
 Visitors paste a Solana address. The page then:

@@ -287,6 +287,7 @@ h2{font-weight:500;font-size:clamp(26px,3.4vw,36px);line-height:1.2;letter-spaci
 .center{display:flex;justify-content:center;padding-top:24px}
 @media (max-width:900px){.replies .max{padding:0 20px 48px}.replies .max::before,.replies .max::after{display:none}.replies .bgfade{left:0;right:0}.egrid{grid-template-columns:minmax(0,1fr)}}
 
+
 /* ---------- CTA ---------- */
 .cta{position:relative;overflow:hidden;text-align:center;padding:96px 24px 140px}
 .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 75% at 50% 0%,color-mix(in srgb,var(--brand) 22%,transparent) 0%,transparent 75%);pointer-events:none}
@@ -417,7 +418,7 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
         <span>Your memecoin analyst</span>
         <span>reading every <span class="rot" id="rot">launch</span></span>
       </h1>
-      <p class="lede">Every hour FOMY picks up to three new Pump.fun launches and writes down what he sees. Paste your wallet and he'll judge your trading, or tag <span class="js-handle">@FomyBot</span> on X with your thesis.</p>
+      <p class="lede">Every hour FOMY picks up to three new Pump.fun launches and writes down what he sees. Paste your wallet and he'll judge your trading, or tag <span class="js-handle">@FomyBot</span> on X or Fomo with your thesis and he'll respond.</p>
     </div>
   </section>
 
@@ -468,11 +469,11 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
     <section class="frame" id="how" style="border-top:0">
       <div class="max">
         <div class="three">
-          <div class="sec-head" style="margin-bottom:32px"><h2>Ask FOMY anything on X</h2></div>
+          <div class="sec-head" style="margin-bottom:32px"><h2>Ask FOMY on X or Fomo</h2></div>
           <div class="three-grid">
             <div class="tcard">
               <h3>Tag him</h3>
-              <p>Post your thesis, your bags or your 3am shitpost and tag <span class="js-handle">@FomyBot</span>.</p>
+              <p>Post your thesis, your bags or your 3am shitpost and tag <span class="js-handle">@FomyBot</span> on X, or ping him on Fomo.</p>
               <div class="tviz">
                 <div class="mock"><div class="row"><span class="av"></span><span><span class="tag js-handle">@FomyBot</span> is it over</span></div></div>
                 <div class="mock" style="opacity:.6"><div class="row"><span class="av"></span><span class="ln" style="width:70%"></span></div></div>
@@ -488,7 +489,7 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
             </div>
             <div class="tcard">
               <h3>He answers</h3>
-              <p>His reply lands in your thread. The best exchanges show up on this page.</p>
+              <p>He replies right where you asked him, on X or on Fomo.</p>
               <div class="tviz">
                 <div class="mock mock-reply"><div class="row"><svg aria-hidden="true"><use href="#orb-mini"/></svg><span style="flex:1;display:flex;flex-direction:column;gap:5px"><span class="ln" style="width:90%"></span><span class="ln" style="width:65%"></span></span></div></div>
               </div>
@@ -552,10 +553,10 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
     <div class="max">
       <div class="sec-head">
         <h2>Recent replies</h2>
-        <p>What FOMY has been telling people on X.</p>
+        <p>A few of FOMY's replies on X. Tag him on X or Fomo and he'll answer you too.</p>
       </div>
       <div class="egrid" id="egrid"></div>
-      <div class="center"><a class="btn btn-outline js-x-profile" href="https://x.com/FomyBot" target="_blank" rel="noopener">See all on X<svg class="arr" aria-hidden="true" style="width:14px;height:14px"><use href="#ic-arrow"/></svg></a></div>
+      <div class="center jactions" style="justify-content:center"><a class="btn btn-outline js-x-profile" href="https://x.com/FomyBot" target="_blank" rel="noopener">See all on X<svg class="arr" aria-hidden="true" style="width:14px;height:14px"><use href="#ic-arrow"/></svg></a></div>
     </div>
   </section>
 
@@ -565,7 +566,7 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
   <section class="cta">
     <span class="pill">Ask FOMY</span>
     <h3>Got a thesis?</h3>
-    <p>Bring your best one. Or your worst one.</p>
+    <p>Tag FOMY on X or Fomo with your best one. Or your worst one. He'll respond.</p>
     <a class="btn btn-primary btn-lg js-x-ask" href="https://x.com/intent/tweet?text=%40FomyBot%20" target="_blank" rel="noopener">Ask on X<svg class="arr" aria-hidden="true" style="width:14px;height:14px"><use href="#ic-arrow"/></svg></a>
   </section>
 
