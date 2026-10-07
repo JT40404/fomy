@@ -13,7 +13,7 @@ Deploy the same way as before: put these files at the top level of your GitHub r
 ## Settings
 Everything you edit is in the `SITE` block at the top of the `<script>` in `index.html`.
 
-- `fomoUrl`: link to FOMY's profile on Fomo. Leave it as `""` until you have it. Once set, the "FOMY on Fomo" header button, the "Open FOMY on Fomo" button and the footer link all point there.
+- `fomoUrl`: link to FOMY's profile on Fomo, already set to https://fomo.family/profile/FomyBot. Once set, the "FOMY on Fomo" header button, the "Open FOMY on Fomo" button and the footer link all point there.
 - `ca`: the $FOMY Solana mint address, added on launch day. This switches on the header coin button, the copy buttons, the hero price and the "$FOMY, live" card.
 - `callouts`: thresholds for the token tracker (age, liquidity, buyers). Add words or mint addresses to `blockWords` / `blockMints` to keep tokens off the page.
 - `solanaRpcs`: the RPC nodes the wallet judge reads from. They're public and keyless by default. If the judge fails under heavy traffic, put a free Helius or QuickNode RPC URL first.
