@@ -1,34 +1,36 @@
 # FOMY website
 
-A static site: no server, no build step. CoinGecko is the only data source, used without a key.
-Deploy the same way as before: put these files at the top level of your GitHub repo and import it into Vercel with Framework Preset "Other".
+A static site with no server and no build step. It does three things:
 
+1. **Token tracker:** every hour it scans new Pump.fun launches from CoinGecko and posts FOMY's read on up to three of them.
+2. **Wallet judge:** visitors paste a Solana address and FOMY grades their trading habits.
+3. **How FOMY replies:** explains that people post their thesis on Fomo and FOMY answers there.
+
+The tracker and judge run on their own, in each visitor's browser. There's nothing to keep running and no API keys to set.
+
+Deploy the same way as before: put these files at the top level of your GitHub repo and push. Vercel redeploys automatically.
+
+## Settings
 Everything you edit is in the `SITE` block at the top of the `<script>` in `index.html`.
 
-## Launch day
-Set `ca: "YourSolanaMint"`. This switches on the header coin button, the copy buttons, the hero price and the live "$FOMY, live" card.
+- `fomoUrl`: link to FOMY's profile on Fomo. Leave it as `""` until you have it. Once set, the "FOMY on Fomo" header button, the "Open FOMY on Fomo" button and the footer link all point there.
+- `ca`: the $FOMY Solana mint address, added on launch day. This switches on the header coin button, the copy buttons, the hero price and the "$FOMY, live" card.
+- `callouts`: thresholds for the token tracker (age, liquidity, buyers). Add words or mint addresses to `blockWords` / `blockMints` to keep tokens off the page.
+- `solanaRpcs`: the RPC nodes the wallet judge reads from. They're public and keyless by default. If the judge fails under heavy traffic, put a free Helius or QuickNode RPC URL first.
+- `coingeckoDemoKey`: optional free CoinGecko key, if you hit rate limits.
 
-## Callouts
-Every hour the page scans Pump.fun launches from CoinGecko's onchain data, using four lists: trending Solana pools, the busiest pump.fun pools, the busiest PumpSwap pools, and the newest pools.
-- **Filter:** each token has to be 20 minutes to 24 hours old, hold at least $8k liquidity, and have 25+ buyers in the last hour.
-- **Score:** the survivors are ranked by volume, unique buyers and buy/sell balance. Vertical 5-minute candles and dumping tokens are penalised.
-- **Write-up:** FOMY writes a read for the top 3: what's working, red flags, and what has to be true. He labels each "Worth watching", "Early, unproven" or "Handle with tongs". He never says buy.
+## How the tracker picks tokens
+It pulls four lists from CoinGecko's onchain data: trending Solana pools, the busiest pump.fun pools, the busiest PumpSwap pools, and the newest pools. Each token has to be 20 minutes to 24 hours old, hold at least $8k liquidity, and have 25+ buyers in the last hour. The survivors are ranked by volume, unique buyers and buy/sell balance. Vertical candles and dumping tokens are penalised. FOMY writes a read for the top three, with what's working, red flags, what has to be true, and a label. He never says buy.
 
-Tune the thresholds in `SITE.callouts`. Add words or mint addresses to `blockWords` / `blockMints` to keep tokens off the page, for example offensive names.
+Each visitor's browser runs its own scan, so two people in the same hour can see slightly different picks.
 
-Each visitor's browser does the scan. Two visitors in the same hour may see slightly different picks if the market moved between their visits. A single shared set of callouts plus a history page needs a small scheduled job, such as a GitHub Action, to write them to the repo.
+## How the wallet judge works
+It reads the wallet's last 100 transactions from a public Solana RPC node, finds the swaps, and works out:
+- win rate, realized PnL and hold times
+- overtrading, bags never sold and late-night trading
+- fees, and buying bigger right after a loss
 
-## Replies
-Paste links to FOMY's best X reply posts into `posts: [...]`, newest first. Each one shows the person's post above FOMY's reply. If the list is empty, the section shows the @FomyBot X timeline instead (X sometimes only shows that to logged-in visitors).
+FOMY then gives a grade, an archetype and a verdict, plus a "Copy my verdict" button so people can share it on Fomo. It's read-only: only the public address is used and nothing is stored.
 
-The site tells visitors they can tag FOMY on X or Fomo and he'll respond. Replies on Fomo stay on Fomo; only X posts are shown on the site.
-
-## Wallet judge
-Visitors paste a Solana address. The page then:
-1. Reads the wallet's last 100 transactions from a public Solana RPC node. This needs no key. CoinGecko doesn't offer wallet history, so this is the one non-CoinGecko source.
-2. Finds the swaps in those transactions and works out habits: win rate, realized PnL, hold times, overtrading, bags never sold, late-night trading, fees, and buying bigger right after a loss.
-3. Writes FOMY's verdict with a grade and an archetype, plus a "Share on X" button.
-
-Everything runs in the visitor's browser and nothing is stored. The numbers are approximate. The judge only sees the last 100 transactions, and it skips multi-hop routes, transfers and anything it can't read as a simple swap.
-
-Public RPC nodes are rate-limited. If the judge starts failing under traffic, get a free RPC URL from Helius or QuickNode and put it first in `solanaRpcs`. If the provider offers it, restrict that URL to your domain.
+## Replies on Fomo
+Fomo has no public API, so the site can't read or post Fomo replies. Write FOMY's replies with the FOMY Reply Desk in your Claude account and post them on Fomo yourself.

@@ -4,12 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FOMY — your memecoin analyst</title>
-<meta name="description" content="FOMY reads new Pump.fun launches every hour and writes down what he sees. Tag @FomyBot on X with your thesis.">
+<meta name="description" content="FOMY tracks new Pump.fun launches every hour and judges your wallet. Post your thesis on Fomo and he replies.">
 <meta property="og:title" content="FOMY — your memecoin analyst">
-<meta property="og:description" content="Hourly reads on new Pump.fun launches. Tag @FomyBot with your thesis.">
+<meta property="og:description" content="Hourly reads on new Pump.fun launches, and a judge for your wallet.">
 <meta property="og:image" content="/fomy.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@FomyBot">
 <link rel="icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -272,41 +271,13 @@ h2{font-weight:500;font-size:clamp(26px,3.4vw,36px);line-height:1.2;letter-spaci
 @media (max-width:900px){.judge{padding:48px 20px}}
 @media (max-width:560px){.tlist{grid-template-columns:1fr}.jform .btn span{display:none}}
 
-/* ---------- Replies (Templates-style) ---------- */
-.replies{position:relative;border-top:1px solid var(--border)}
-.replies .max{padding:0 80px 64px}
-.replies .bgfade{position:absolute;top:0;bottom:0;left:50px;right:50px;background:linear-gradient(to bottom,var(--brand-soft),var(--bg));pointer-events:none}
-.replies .max::before,.replies .max::after{content:"";position:absolute;top:0;bottom:0;width:1px;background:var(--border)}
-.replies .max::before{left:50px}.replies .max::after{right:50px}
-.replies .sec-head{padding-top:56px}
-.egrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start;position:relative}
-.egrid>div{min-width:0}
-.egrid.single{grid-template-columns:minmax(0,600px);justify-content:center}
-.loading,.fallback{grid-column:1/-1;text-align:center;color:var(--body);padding:56px 20px;border:1px dashed var(--dash);background:var(--card)}
-.fallback p{margin:0 0 16px}
-.center{display:flex;justify-content:center;padding-top:24px}
-@media (max-width:900px){.replies .max{padding:0 20px 48px}.replies .max::before,.replies .max::after{display:none}.replies .bgfade{left:0;right:0}.egrid{grid-template-columns:minmax(0,1fr)}}
-
-
 /* ---------- CTA ---------- */
-.cta{position:relative;overflow:hidden;text-align:center;padding:96px 24px 140px}
+.cta{position:relative;overflow:hidden;text-align:center;padding:96px 24px}
 .cta::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 75% at 50% 0%,color-mix(in srgb,var(--brand) 22%,transparent) 0%,transparent 75%);pointer-events:none}
 .cta>*{position:relative}
 .pill{display:inline-flex;border:1px solid color-mix(in srgb,var(--brand) 40%,transparent);color:var(--brand);background:var(--brand-soft);border-radius:999px;padding:4px 12px;font:12px var(--mono);letter-spacing:.08em}
 .cta h3{font-weight:500;font-size:clamp(30px,4vw,42px);margin:20px 0 0;line-height:1.2}
 .cta p{color:var(--body);margin:12px 0 28px}
-
-/* ---------- Sticky ask ---------- */
-.ask{position:sticky;bottom:calc(32px + env(safe-area-inset-bottom,0px));z-index:50;max-width:36rem;margin:-64px auto 0;padding:0 16px}
-.ask form{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:4px;box-shadow:0 2px 0 var(--border),0 16px 40px rgba(0,0,0,.25);padding:8px 8px 8px 14px}
-.ask form:focus-within{border-color:var(--brand);box-shadow:0 1px 0 var(--border),0 16px 40px rgba(0,0,0,.25)}
-.ask-field{position:relative;flex:1;min-width:0;font:500 15px var(--mono)}
-.ask input{width:100%;background:transparent;border:0;outline:0;color:var(--text);font:inherit;padding:8px 0;caret-color:var(--brand);position:relative;z-index:1}
-.ask .ph{position:absolute;inset:0;display:flex;align-items:center;pointer-events:none;white-space:nowrap;overflow:hidden}
-.ask .ph b{color:var(--brand);font-weight:500}.ask .ph span{color:var(--muted)}
-.ask button{width:36px;height:36px;border:0;border-radius:3px;display:grid;place-items:center;cursor:pointer;background:var(--card-2);color:var(--muted);transition:background .15s,color .15s;flex-shrink:0}
-.ask button.on{background:var(--brand);color:var(--brand-ink)}
-.ask button svg{width:15px;height:15px}
 
 /* ---------- Footer ---------- */
 footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe-area-inset-bottom,0px))}
@@ -370,18 +341,17 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
   <div class="hdr">
     <a class="brand" href="#top" aria-label="FOMY home"><svg aria-hidden="true"><use href="#orb-mini"/></svg>FOMY</a>
     <nav class="nav" aria-label="Primary">
-      <a href="#how">How it works</a>
-      <a href="#callouts">Callouts</a>
+      <a href="#callouts">Token tracker</a>
       <a href="#judge">Judge me</a>
-      <a href="#replies">Replies</a>
+      <a href="#how">How FOMY replies</a>
       <a href="#token">$FOMY</a>
     </nav>
     <div class="hdr-actions">
       <button class="btn btn-outline js-copy-ca" id="hdrCa" type="button" hidden aria-label="Copy $FOMY contract address" title="Copy $FOMY contract address">
         <svg aria-hidden="true"><use href="#ic-coin"/></svg><span class="hdr-ca" id="hdrCaText"></span>
       </button>
-      <a class="btn btn-primary js-x-profile" href="https://x.com/FomyBot" target="_blank" rel="noopener" aria-label="Official FOMY account on X" title="Official FOMY account on X">
-        <svg aria-hidden="true"><use href="#ic-bubble"/></svg><span class="hdr-x-label js-handle">@FomyBot</span>
+      <a class="btn btn-primary js-fomo" href="#how" aria-label="FOMY on Fomo" title="FOMY on Fomo">
+        <svg aria-hidden="true"><use href="#ic-bubble"/></svg><span class="hdr-x-label">FOMY on Fomo</span>
       </a>
     </div>
   </div>
@@ -418,7 +388,7 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
         <span>Your memecoin analyst</span>
         <span>reading every <span class="rot" id="rot">launch</span></span>
       </h1>
-      <p class="lede">Every hour FOMY picks up to three new Pump.fun launches and writes down what he sees. Paste your wallet and he'll judge your trading, or tag <span class="js-handle">@FomyBot</span> on X or Fomo with your thesis and he'll respond.</p>
+      <p class="lede">FOMY tracks new Pump.fun launches every hour and judges any wallet you paste in. Post your thesis on Fomo and he'll reply to it there.</p>
     </div>
   </section>
 
@@ -457,7 +427,7 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
                 </div>
               </div>
               <div class="ca-row"><code class="js-ca-text" id="caCode">Not launched yet</code><button class="btn btn-outline js-copy-ca" type="button" id="caCopyBtn">Copy</button></div>
-              <p id="mktNote">Market data from CoinGecko. The only real address is the one shown here and pinned on <span class="js-handle">@FomyBot</span>.</p>
+              <p id="mktNote">Market data from CoinGecko. The only real contract address is the one shown here.</p>
             </div>
           </div>
         </div>
@@ -465,39 +435,6 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
     </section>
     <div class="hatch-row"><div class="hatch"></div></div>
 
-    <!-- How it works -->
-    <section class="frame" id="how" style="border-top:0">
-      <div class="max">
-        <div class="three">
-          <div class="sec-head" style="margin-bottom:32px"><h2>Ask FOMY on X or Fomo</h2></div>
-          <div class="three-grid">
-            <div class="tcard">
-              <h3>Tag him</h3>
-              <p>Post your thesis, your bags or your 3am shitpost and tag <span class="js-handle">@FomyBot</span> on X, or ping him on Fomo.</p>
-              <div class="tviz">
-                <div class="mock"><div class="row"><span class="av"></span><span><span class="tag js-handle">@FomyBot</span> is it over</span></div></div>
-                <div class="mock" style="opacity:.6"><div class="row"><span class="av"></span><span class="ln" style="width:70%"></span></div></div>
-              </div>
-            </div>
-            <div class="tcard">
-              <h3>He reads it</h3>
-              <p>FOMY goes through everything that comes in and answers in his own time.</p>
-              <div class="tviz">
-                <svg class="reading-orb" aria-hidden="true"><use href="#orb-mini"/></svg>
-                <div class="reading-lines"><i></i><i></i><i style="width:70%"></i></div>
-              </div>
-            </div>
-            <div class="tcard">
-              <h3>He answers</h3>
-              <p>He replies right where you asked him, on X or on Fomo.</p>
-              <div class="tviz">
-                <div class="mock mock-reply"><div class="row"><svg aria-hidden="true"><use href="#orb-mini"/></svg><span style="flex:1;display:flex;flex-direction:column;gap:5px"><span class="ln" style="width:90%"></span><span class="ln" style="width:65%"></span></span></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
   <div class="hatch-row"><div class="hatch"></div></div>
 
@@ -547,16 +484,41 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
     </div>
   </section>
 
-  <!-- Replies -->
-  <section class="replies" id="replies">
-    <div class="bgfade"></div>
+  <!-- How FOMY replies (Fomo) -->
+  <section class="frame" id="how">
     <div class="max">
-      <div class="sec-head">
-        <h2>Recent replies</h2>
-        <p>A few of FOMY's replies on X. Tag him on X or Fomo and he'll answer you too.</p>
+      <div class="three">
+        <div class="sec-head" style="margin-bottom:32px">
+          <span class="eyebrow">FOMY on Fomo</span>
+          <h2>Post your thesis on Fomo. FOMY replies.</h2>
+          <p>FOMY lives on Fomo. Post a thesis there and he'll answer it under your post.</p>
+        </div>
+        <div class="three-grid">
+          <div class="tcard">
+            <h3>Post on Fomo</h3>
+            <p>Open Fomo and post your thesis, your bags or your worst take.</p>
+            <div class="tviz">
+              <div class="mock"><div class="row"><span class="av"></span><span>thesis: cats are the new dogs, loading up</span></div></div>
+              <div class="mock" style="opacity:.6"><div class="row"><span class="av"></span><span class="ln" style="width:70%"></span></div></div>
+            </div>
+          </div>
+          <div class="tcard">
+            <h3>FOMY reads it</h3>
+            <p>He reads the theses posted on Fomo and picks out what your take actually rests on.</p>
+            <div class="tviz">
+              <svg class="reading-orb" aria-hidden="true"><use href="#orb-mini"/></svg>
+              <div class="reading-lines"><i></i><i></i><i style="width:70%"></i></div>
+            </div>
+          </div>
+          <div class="tcard">
+            <h3>He replies on Fomo</h3>
+            <p>His answer shows up under your post: the assumption you're making, what you're missing, sometimes a roast. Never a buy call.</p>
+            <div class="tviz">
+              <div class="mock mock-reply"><div class="row"><svg aria-hidden="true"><use href="#orb-mini"/></svg><span style="flex:1;display:flex;flex-direction:column;gap:5px"><span class="ln" style="width:90%"></span><span class="ln" style="width:65%"></span></span></div></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="egrid" id="egrid"></div>
-      <div class="center jactions" style="justify-content:center"><a class="btn btn-outline js-x-profile" href="https://x.com/FomyBot" target="_blank" rel="noopener">See all on X<svg class="arr" aria-hidden="true" style="width:14px;height:14px"><use href="#ic-arrow"/></svg></a></div>
     </div>
   </section>
 
@@ -564,32 +526,23 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
 
   <!-- CTA -->
   <section class="cta">
-    <span class="pill">Ask FOMY</span>
+    <span class="pill">On Fomo</span>
     <h3>Got a thesis?</h3>
-    <p>Tag FOMY on X or Fomo with your best one. Or your worst one. He'll respond.</p>
-    <a class="btn btn-primary btn-lg js-x-ask" href="https://x.com/intent/tweet?text=%40FomyBot%20" target="_blank" rel="noopener">Ask on X<svg class="arr" aria-hidden="true" style="width:14px;height:14px"><use href="#ic-arrow"/></svg></a>
+    <p>Post it on Fomo. Your best one, or your worst one. FOMY will reply.</p>
+    <a class="btn btn-primary btn-lg js-fomo" href="#how">Open FOMY on Fomo<svg class="arr" aria-hidden="true" style="width:14px;height:14px"><use href="#ic-arrow"/></svg></a>
   </section>
 
-  <div class="ask">
-    <form id="askForm">
-      <div class="ask-field">
-        <label for="askInput" class="sr">Your question for FOMY</label>
-        <input id="askInput" maxlength="260" autocomplete="off">
-        <div class="ph" id="askPh"><b>Ask FOMY</b><span>&nbsp;anything on X…</span></div>
-      </div>
-      <button type="submit" id="askBtn" aria-label="Post to X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg></button>
-    </form>
-  </div>
+
 </main>
 
-<div class="hatch-row" style="border-top:1px solid var(--border);margin-top:72px"><div class="hatch"></div></div>
+<div class="hatch-row" style="border-top:1px solid var(--border)"><div class="hatch"></div></div>
 <footer>
   <div class="foot">
     <a class="brand" href="#top"><svg aria-hidden="true"><use href="#orb-mini"/></svg>FOMY</a>
     <div class="foot-cols">
-      <div class="foot-col"><b>Site</b><a href="#how">How it works</a><a href="#callouts">Callouts</a><a href="#judge">Wallet judge</a><a href="#replies">Replies</a></div>
+      <div class="foot-col"><b>Site</b><a href="#callouts">Token tracker</a><a href="#judge">Wallet judge</a><a href="#how">How FOMY replies</a></div>
       <div class="foot-col" id="footToken"><b>$FOMY</b><a href="#token">Market</a><a id="fSolscan" href="#token" target="_blank" rel="noopener" hidden>Solscan</a><a id="fDex" href="#token" target="_blank" rel="noopener" hidden>DexScreener</a></div>
-      <div class="foot-col"><b>Community</b><a class="js-x-profile" href="https://x.com/FomyBot" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#ic-bubble"/></svg>X</a></div>
+      <div class="foot-col"><b>Community</b><a class="js-fomo" href="#how"><svg class="ico" aria-hidden="true"><use href="#ic-bubble"/></svg>Fomo</a></div>
     </div>
   </div>
   <div class="foot-bottom">
@@ -605,15 +558,11 @@ footer{border-top:1px solid var(--border);padding:64px 24px calc(48px + env(safe
    SETTINGS — the only part you need to edit
    ===================================================================== */
 const SITE = {
-  handle: "FomyBot",
+  // Link to FOMY's profile on Fomo. Leave "" until you have it.
+  fomoUrl: "",
 
   // Paste the $FOMY Solana mint address here on launch day. Leave "" until then.
   ca: "",
-
-  // Links to FOMY's best reply posts on X, newest first.
-  // e.g. "https://x.com/FomyBot/status/1234567890123456789"
-  posts: [
-  ],
 
   // Optional free CoinGecko Demo key. Without it the site uses CoinGecko's keyless onchain endpoint.
   coingeckoDemoKey: "",
@@ -678,10 +627,8 @@ function ageWords(ms){ const m = Math.round(ms/60000); if (m < 60) return m + " 
 /* ---------- Handle + $FOMY contract address ---------- */
 const CA = (SITE.ca || "").trim();
 function applyConfig(){
-  const h = SITE.handle;
-  $$(".js-handle").forEach(e => e.textContent = "@" + h);
-  $$(".js-x-profile").forEach(a => a.href = "https://x.com/" + h);
-  $$(".js-x-ask").forEach(a => a.href = "https://x.com/intent/tweet?text=" + encodeURIComponent("@" + h + " "));
+  const fomo = /^https:\/\//.test(SITE.fomoUrl || "") ? SITE.fomoUrl : "";
+  if (fomo) $$(".js-fomo").forEach(a => { a.href = fomo; a.target = "_blank"; a.rel = "noopener"; });
   if (CA) {
     $$(".js-ca-text").forEach(e => e.textContent = CA);
     $("#hdrCa").hidden = false;
@@ -1036,7 +983,7 @@ async function loadMarket(){
     }
     mktOk = Date.now();
     $("#mktPre").hidden = true; $("#mktLive").hidden = false;
-    $("#mktNote").innerHTML = `Market data from CoinGecko, updated every minute. The only real address is the one shown here and pinned on <span class="js-handle">@${esc(SITE.handle)}</span>.`;
+    $("#mktNote").textContent = "Market data from CoinGecko, updated every minute. The only real contract address is the one shown here.";
   } catch (e) {
     if (!mktOk) {
       $("#mktPre").innerHTML = e.status === 404
@@ -1303,77 +1250,21 @@ function renderJudgement(wallet, s, v, syms, solUsd){
       ${s.worst ? `<div><span>Worst closed trade</span><b>${esc(sym(s.worst.mint))} <em class="down">${fmtSol(s.worst.pnl, true)}${usd(s.worst.pnl)}</em></b></div>` : ""}
     </div>` : ""}
     <div class="jactions">
-      <a class="btn btn-primary" id="jshare" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-bubble"/></svg>Share on X</a>
+      <button class="btn btn-primary" id="jshare" type="button"><svg aria-hidden="true"><use href="#ic-bubble"/></svg>Copy my verdict</button>
       <a class="btn btn-outline" href="https://solscan.io/account/${encodeURIComponent(wallet)}" target="_blank" rel="noopener">View on Solscan</a>
     </div>`;
-  const text = `@${SITE.handle} judged my wallet: ${v.arch}, grade ${v.grade}.\n\n"${v.opener}"\n\n${location.origin.startsWith("http") ? location.origin : ""}`;
-  $("#jshare").href = "https://x.com/intent/tweet?text=" + encodeURIComponent(text.trim());
+  const text = `FOMY judged my wallet: ${v.arch}, grade ${v.grade}.\n\n"${v.opener}"${location.origin.startsWith("http") ? "\n\n" + location.origin : ""}`;
+  $("#jshare").onclick = () => copy(text, "Verdict");
   $("#jboard").hidden = false;
   $("#jboard").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
 }
 
 /* =====================================================================
-   Replies (official X embeds — no keys)
-   ===================================================================== */
-let widgetsP;
-function loadWidgets(){
-  if (widgetsP) return widgetsP;
-  widgetsP = new Promise((res, rej) => {
-    const s = document.createElement("script");
-    s.src = "https://platform.twitter.com/widgets.js"; s.async = true; s.charset = "utf-8";
-    s.onload = () => window.twttr?.ready ? twttr.ready(res) : rej();
-    s.onerror = rej; document.head.appendChild(s); setTimeout(rej, 12000);
-  });
-  return widgetsP;
-}
-function repliesFallback(msg){
-  const g = $("#egrid"); g.className = "egrid";
-  g.innerHTML = `<div class="fallback"><p>${msg}</p><a class="btn btn-outline" href="https://x.com/${esc(SITE.handle)}" target="_blank" rel="noopener">Open @${esc(SITE.handle)} on X</a></div>`;
-}
-async function renderReplies(){
-  const g = $("#egrid");
-  const ids = SITE.posts.map(u => (String(u).match(/status\/(\d+)/) || [])[1]).filter(Boolean);
-  g.innerHTML = `<div class="loading">Loading replies…</div>`;
-  let tw;
-  try { tw = await loadWidgets(); } catch { repliesFallback("X's embeds didn't load. A content blocker may be stopping them."); return; }
-  if (ids.length) {
-    g.className = "egrid" + (ids.length === 1 ? " single" : ""); g.innerHTML = "";
-    let shown = 0;
-    for (const id of ids) {
-      const slot = document.createElement("div"); g.appendChild(slot);
-      const el = await tw.widgets.createTweet(id, slot, { theme: theme(), dnt: true, align: "center", conversation: "all" });
-      if (el) shown++; else slot.remove();
-    }
-    if (!shown) repliesFallback("These posts couldn't be loaded. They may have been deleted.");
-  } else {
-    const holder = document.createElement("div");
-    const el = await Promise.race([
-      tw.widgets.createTimeline({ sourceType: "profile", screenName: SITE.handle }, holder, { theme: theme(), dnt: true, height: 640, chrome: "noheader nofooter transparent" }),
-      new Promise(r => setTimeout(() => r(null), 10000)),
-    ]);
-    if (el) { g.className = "egrid single"; g.innerHTML = ""; g.appendChild(holder); }
-    else repliesFallback("X didn't send the timeline. It sometimes only shows to logged-in visitors.");
-  }
-}
-// Load embeds only when the section gets close to the screen.
-new IntersectionObserver((ents, obs) => { if (ents.some(e => e.isIntersecting)) { obs.disconnect(); renderReplies(); } }, { rootMargin: "400px" }).observe($("#replies"));
-
-/* =====================================================================
    Small interactions
    ===================================================================== */
-const askInput = $("#askInput");
-askInput.addEventListener("input", () => {
-  const has = askInput.value.length > 0;
-  $("#askPh").hidden = has; $("#askBtn").classList.toggle("on", has);
-});
-$("#askForm").addEventListener("submit", e => {
-  e.preventDefault();
-  window.open("https://x.com/intent/tweet?text=" + encodeURIComponent("@" + SITE.handle + " " + askInput.value.trim()), "_blank", "noopener");
-});
-
 (function rotate(){
   if (reduced) return;
-  const words = ["launch", "chart", "thesis", "narrative", "bag", "shitpost"], el = $("#rot"); let i = 0;
+  const words = ["launch", "wallet", "chart", "thesis", "bag"], el = $("#rot"); let i = 0;
   setInterval(() => { i = (i + 1) % words.length; el.textContent = words[i]; }, 2200);
 })();
 
